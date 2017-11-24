@@ -1,1 +1,19 @@
-/* You can add global styles to this file, and also import other style files */
+/**
+ * Global css ler burdan ekleniyor
+ *
+ * bootsrap eklendi
+ * bootstrap@4.0.0-beta.2 
+ *
+ * fontawesome eklendi
+ * Font Awesome v4.7.0
+ *
+*/
+
+@import "~bootstrap/dist/css/bootstrap.min.css";
+
+@import "~font-awesome/css/font-awesome.min.css";
+
+
+body {
+  padding-top: 3rem;
+}
