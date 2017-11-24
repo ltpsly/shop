@@ -1,4 +1,6 @@
 import { Component } from '@angular/core';
+import { AngularFireAuth } from 'angularfire2/auth';
+import { Observable } from 'rxjs/Observable';
 
 @Component({
   selector: 'app-navbar',
@@ -6,6 +8,14 @@ import { Component } from '@angular/core';
   styleUrls: ['./app-navbar.component.css']
 })
 export class AppNavbarComponent {
+
   public isCollapsed = true;
-  constructor() { }
+
+  constructor(public afAuth: AngularFireAuth) {
+    afAuth.authState.subscribe(x => console.log(x));
+  }
+
+  logout() {
+    this.afAuth.auth.signOut();
+  }
 }
