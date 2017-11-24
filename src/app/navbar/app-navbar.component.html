@@ -1,7 +1,7 @@
 <nav class="navbar navbar-expand-md navbar-light bg-light fixed-top">
   <a class="navbar-brand"
      routerLink="/">
-    <i class="fa fa-shopping-cart"></i> Shop
+    Shop
   </a>
   <button class="navbar-toggler"
           type="button"
@@ -14,20 +14,20 @@
   <div class="collapse navbar-collapse"
        [ngbCollapse]="isCollapsed"
        id="navbarsExampleDefault">
-    <ul class="navbar-nav mr-auto">
-      <li class="nav-item">
+    <!-- <ul class="navbar-nav mr-auto">
+    </ul> -->
+    <ul class="navbar-nav ml-auto">
+      <li class="nav-item"
+          ngbTooltip="Shopping Cart"
+          placement="bottom">
         <a class="nav-link"
            routerLink="/shopping-cart">
-          Shopping cart
+          <i class="fa fa-shopping-cart"></i>
         </a>
       </li>
-      <li class="nav-item">
-        <a class="nav-link"
-           routerLink="/login">
-          <i class="fa fa-sign-in"></i> Login
-        </a>
-      </li>
-      <li ngbDropdown
+      <li *ngIf="afAuth.authState | async; let user;  else showLogin"
+          ngbDropdown
+          placement="bottom-right"
           class="nav-item">
         <a class="nav-link dropdown-toggle"
            href="javascript:;"
@@ -35,7 +35,7 @@
            aria-expanded="false"
            ngbDropdownToggle
            id="dropdownBasic1">
-          <i class="fa fa-user"></i>
+          {{user.displayName}}
         </a>
         <div ngbDropdownMenu
              aria-labelledby="dropdownBasic1">
@@ -58,6 +58,15 @@
           </a>
         </div>
       </li>
+      <ng-template #showLogin>
+        <li class="nav-item">
+          <a class="nav-link"
+             routerLink="/login">
+            <i class="fa fa-sign-in"></i>
+            Login
+          </a>
+        </li>
+      </ng-template>
     </ul>
   </div>
 </nav>

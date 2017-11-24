@@ -11,9 +11,8 @@ export class AppNavbarComponent {
 
   public isCollapsed = true;
 
-  constructor(public afAuth: AngularFireAuth) {
-    afAuth.authState.subscribe(x => console.log(x));
-  }
+
+  constructor(public afAuth: AngularFireAuth) { }
 
   logout() {
     this.afAuth.auth.signOut();
