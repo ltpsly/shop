@@ -8,7 +8,7 @@ import { AngularFireAuthModule } from 'angularfire2/auth';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 import { AppComponent } from './app.component';
-import { ShopNavbarComponent } from './shop-navbar/shop-navbar.component';
+import { AppNavbarComponent } from './navbar/app-navbar.component';
 import { HomeComponent } from './home/home.component';
 import { ProductsComponent } from './products/products.component';
 import { ShoppingCartComponent } from './shopping-cart/shopping-cart.component';
@@ -23,7 +23,7 @@ import { AdminOrdersComponent } from './admin/admin-orders/admin-orders.componen
 @NgModule({
   declarations: [
     AppComponent,
-    ShopNavbarComponent,
+    AppNavbarComponent,
     HomeComponent,
     ProductsComponent,
     ShoppingCartComponent,
@@ -46,6 +46,7 @@ import { AdminOrdersComponent } from './admin/admin-orders/admin-orders.componen
       { path: 'shopping-cart', component: ShoppingCartComponent },
       { path: 'check-out', component: CheckOutComponent },
       { path: 'order-success', component: OrderSuccessComponent },
+      { path: 'my/orders', component: MyOrdersComponent },
       { path: 'login', component: LoginComponent },
       { path: 'admin/products', component: AdminProductsComponent },
       { path: 'admin/orders', component: AdminOrdersComponent }
