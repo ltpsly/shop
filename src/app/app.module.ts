@@ -1,3 +1,4 @@
+import { AuthService } from './services/auth.service';
 import { RouterModule } from '@angular/router';
 import { environment } from './../environments/environment';
 import { BrowserModule } from '@angular/platform-browser';
@@ -52,7 +53,9 @@ import { AdminOrdersComponent } from './admin/admin-orders/admin-orders.componen
       { path: 'admin/orders', component: AdminOrdersComponent }
     ])
   ],
-  providers: [],
+  providers: [
+    AuthService
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

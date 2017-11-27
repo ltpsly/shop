@@ -25,7 +25,7 @@
           <i class="fa fa-shopping-cart"></i>
         </a>
       </li>
-      <li *ngIf="afAuth.authState | async; let user;  else showLogin"
+      <li *ngIf="auth.afAuth.authState | async; let user;  else showLogin"
           ngbDropdown
           placement="bottom-right"
           class="nav-item">

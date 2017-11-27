@@ -1,6 +1,5 @@
 import { Component } from '@angular/core';
-import { AngularFireAuth } from 'angularfire2/auth';
-import { Observable } from 'rxjs/Observable';
+import { AuthService } from '../services/auth.service';
 
 @Component({
   selector: 'app-navbar',
@@ -11,10 +10,9 @@ export class AppNavbarComponent {
 
   public isCollapsed = true;
 
-
-  constructor(public afAuth: AngularFireAuth) { }
+  constructor(public auth: AuthService) { }
 
   logout() {
-    this.afAuth.auth.signOut();
+    this.auth.logout();
   }
 }
