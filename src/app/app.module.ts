@@ -1,3 +1,5 @@
+import { ProductService } from './services/product.service';
+import { FormsModule } from '@angular/forms';
 import { CategoryService } from './services/category.service';
 import { AdminAuthGuard } from './guards/admin-auth.guard';
 import { UserService } from './services/user.service';
@@ -46,6 +48,7 @@ import { ProductFormComponent } from './admin/product-form/product-form.componen
     AngularFireModule.initializeApp(environment.firebase),
     AngularFireDatabaseModule,
     AngularFireAuthModule,
+    FormsModule,
     NgbModule.forRoot(),
     RouterModule.forRoot([
       {
@@ -101,7 +104,8 @@ import { ProductFormComponent } from './admin/product-form/product-form.componen
     AuthGuard,
     UserService,
     AdminAuthGuard,
-    CategoryService
+    CategoryService,
+    ProductService
   ],
   bootstrap: [AppComponent]
 })
