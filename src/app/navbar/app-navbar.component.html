@@ -44,10 +44,12 @@
             My Orders
           </a>
           <a class="dropdown-item"
+             *ngIf="isAdmin | async"
              routerLink="admin/orders">
             Manage Orders
           </a>
           <a class="dropdown-item"
+             *ngIf="isAdmin | async"
              routerLink="admin/products">
             Manage Products
           </a>

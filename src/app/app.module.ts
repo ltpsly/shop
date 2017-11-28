@@ -1,3 +1,4 @@
+import { AdminAuthGuard } from './guards/admin-auth.guard';
 import { UserService } from './services/user.service';
 import { AuthGuard } from './guards/auth-guard';
 import { AuthService } from './services/auth.service';
@@ -78,19 +79,20 @@ import { AdminOrdersComponent } from './admin/admin-orders/admin-orders.componen
       {
         path: 'admin/products',
         component: AdminProductsComponent,
-        canActivate: [AuthGuard]
+        canActivate: [AuthGuard, AdminAuthGuard]
       },
       {
         path: 'admin/orders',
         component: AdminOrdersComponent,
-        canActivate: [AuthGuard]
+        canActivate: [AuthGuard, AdminAuthGuard]
       }
     ])
   ],
   providers: [
     AuthService,
     AuthGuard,
-    UserService
+    UserService,
+    AdminAuthGuard
   ],
   bootstrap: [AppComponent]
 })

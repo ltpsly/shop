@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { AuthService } from '../services/auth.service';
 
 @Component({
@@ -6,11 +6,15 @@ import { AuthService } from '../services/auth.service';
   templateUrl: './app-navbar.component.html',
   styleUrls: ['./app-navbar.component.css']
 })
-export class AppNavbarComponent {
+export class AppNavbarComponent implements OnInit {
 
-  public isCollapsed = true;
-
+  public isCollapsed: boolean = true;
+  public isAdmin;
   constructor(public auth: AuthService) { }
+
+  ngOnInit() {
+    this.isAdmin = this.auth.appUser;
+  }
 
   logout() {
     this.auth.logout();

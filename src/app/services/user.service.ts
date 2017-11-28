@@ -6,7 +6,7 @@ import * as fireabase from 'firebase';
 @Injectable()
 export class UserService {
 
-  constructor(private db: AngularFireDatabase) { }
+  constructor(public db: AngularFireDatabase) { }
 
   save(user: fireabase.User) {
     this.db.object(`/users/${user.uid}`).update({

@@ -19,4 +19,17 @@ export class AuthService {
     this.afAuth.auth.signOut();
   }
 
+  get appUser() {
+    return this.afAuth.authState.map(user => {
+      if (user) {
+        if (user.email === 'salihcandusmez@gmail.com') {
+          return true;
+        } else {
+          return false;
+        }
+      } else {
+        return null;
+      }
+    })
+  }
 }
