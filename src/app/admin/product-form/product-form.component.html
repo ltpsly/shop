@@ -42,6 +42,7 @@
             required
             #price="ngModel"
             name="price"
+            [min]="0"
             class="form-control"
             id="price">
 
@@ -49,7 +50,12 @@
 
         <div class="alert alert-danger"
           *ngIf="price.touched && price.invalid">
-          Price is required.
+          <div *ngIf="price.errors.required">
+            Price is required.
+          </div>
+          <div *ngIf="price.errors.min">
+            Price should be 0 or higher.
+          </div>
         </div>
 
       </div>
@@ -92,12 +98,18 @@
           name="imageUrl"
           ngModel
           required
+          url
           #imageUrl="ngModel"
           class="form-control">
 
         <div class="alert alert-danger"
           *ngIf="imageUrl.touched && imageUrl.invalid">
-          Image url id required.
+          <div *ngIf="imageUrl.errors.required">
+            Image url id required.
+          </div>
+          <div *ngIf="imageUrl.errors.url">
+            Please enter a valid URL
+          </div>
         </div>
 
       </div>

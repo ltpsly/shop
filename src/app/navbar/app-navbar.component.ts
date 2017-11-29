@@ -8,7 +8,7 @@ import { AuthService } from '../services/auth.service';
 })
 export class AppNavbarComponent implements OnInit {
 
-  public isCollapsed: boolean = true;
+  public isCollapsed = true;
   public isAdmin;
   constructor(public auth: AuthService) { }
 

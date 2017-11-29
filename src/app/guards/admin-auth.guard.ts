@@ -13,6 +13,6 @@ export class AdminAuthGuard implements CanActivate {
       } else {
         return false;
       }
-    })
+    });
   }
 }
