@@ -4,6 +4,13 @@
     New Product
   </a>
 </p>
+<p>
+  <input type="text"
+    #query
+    class="form-control"
+    placeholder="Search..."
+    (keyup)="filter(query.value)">
+</p>
 <table class="table w-100">
   <thead class="thead-dark">
     <tr>
@@ -13,7 +20,7 @@
     </tr>
   </thead>
   <tbody>
-    <tr *ngFor="let p of products | async">
+    <tr *ngFor="let p of filteredProducts">
       <td>{{p.title}}</td>
       <td>{{p.price | currency: 'USD'}}</td>
       <td>
