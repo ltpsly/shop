@@ -12,7 +12,7 @@
 
         <input type="text"
           #title="ngModel"
-          ngModel
+          [(ngModel)]="product.title"
           name="title"
           class="form-control"
           id="title"
@@ -38,7 +38,7 @@
           </div>
 
           <input type="number"
-            ngModel
+            [(ngModel)]="product.price"
             required
             #price="ngModel"
             name="price"
@@ -67,7 +67,7 @@
         </label>
 
         <select id="category"
-          ngModel
+          [(ngModel)]="product.category"
           required
           #category="ngModel"
           name="category"
@@ -96,7 +96,7 @@
         <input id="imageUrl"
           type="text"
           name="imageUrl"
-          ngModel
+          [(ngModel)]="product.imageUrl"
           required
           url
           #imageUrl="ngModel"
@@ -127,12 +127,13 @@
     <div class="card"
       style="width:20rem">
       <img class="card-img-top"
-        [src]="imageUrl.value"
-        [alt]="title.value">
+        *ngIf="product.imageUrl"
+        [src]="product.imageUrl"
+        [alt]="product.title">
       <div class="card-body">
-        <h4 class="card-title">{{title.value}}</h4>
+        <h4 class="card-title">{{product.title}}</h4>
         <p class="card-text">
-          {{price.value | currency: 'USD'}}
+          {{product.price | currency: 'USD'}}
         </p>
       </div>
     </div>

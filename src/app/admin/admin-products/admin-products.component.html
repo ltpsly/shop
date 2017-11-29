@@ -4,28 +4,24 @@
     New Product
   </a>
 </p>
-<div class="row">
-  <div class="col">
-    <table class="table table-responsive">
-      <thead class="thead-dark">
-        <tr>
-          <th scope="col">Title</th>
-          <th scope="col">Price</th>
-          <th scope="col"></th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr *ngFor="let p of products | async">
-          <td>{{p.title}}</td>
-          <td>{{p.price}}</td>
-          <td>
-            <a [routerLink]="['/admin/products/', p.key]"
-              class="btn btn-sm btn-otline-dark">
-              <i class="fa fa-edit"></i>
-            </a>
-          </td>
-        </tr>
-      </tbody>
-    </table>
-  </div>
-</div>
+<table class="table w-100">
+  <thead class="thead-dark">
+    <tr>
+      <th scope="col">Title</th>
+      <th scope="col">Price</th>
+      <th scope="col"></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let p of products | async">
+      <td>{{p.title}}</td>
+      <td>{{p.price}}</td>
+      <td>
+        <a [routerLink]="['/admin/products/', p.key]"
+          class="btn btn-sm btn-otline-dark">
+          <i class="fa fa-edit"></i>
+        </a>
+      </td>
+    </tr>
+  </tbody>
+</table>
