@@ -15,12 +15,17 @@ export class AppComponent {
     router: Router
   ) {
     auth.afAuth.authState.subscribe(user => {
-      if (user) {
-        userService.save(user);
+      if (!user) return;
 
-        const returnUrl = localStorage.getItem('returnUrl');
-        router.navigateByUrl(returnUrl);
-      }
+      userService.save(user);
+
+      let returnUrl = localStorage.getItem('returnUrl');
+
+      if (!returnUrl) return;
+
+      localStorage.removeItem('returnUrl');
+      router.navigateByUrl(returnUrl);
+      
     });
   }
 }
