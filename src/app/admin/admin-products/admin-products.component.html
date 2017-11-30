@@ -22,8 +22,7 @@
     </tr>
   </thead>
   <tbody>
-    <tr *ngFor="let p of filteredProducts; let i = index">
-      <td>{{i + 1}}</td>
+    <tr *ngFor="let p of filteredProducts">
       <td>{{p.title}}</td>
       <td>{{p.price | currency: 'USD'}}</td>
       <td>
@@ -35,12 +34,10 @@
     </tr>
   </tbody>
 </table>
-<pre>
-{{filteredProducts | json}}
-</pre>
-<ngb-pagination [collectionSize]="numberOfProducts"
-  (click)="changePage(page)"
-  [(page)]="page"
-  [directionLinks]="false"
-  aria-label="Default pagination">
-</ngb-pagination>
+<div class="mx-auto">
+  <ngb-pagination (pageChange)="changePage($event)"
+    [collectionSize]="numberOfProducts"
+    [(page)]="page"
+    aria-label="Default pagination">
+  </ngb-pagination>
+</div>

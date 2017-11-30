@@ -10,8 +10,8 @@ import { ProductService } from '../../services/product.service';
   styleUrls: ['./admin-products.component.css']
 })
 export class AdminProductsComponent implements OnInit, OnDestroy {
+  page;
   numberOfProducts: number;
-  page = 1;
   products: Product[];
   filteredProducts: any[];
   subscription: Subscription;
@@ -24,22 +24,26 @@ export class AdminProductsComponent implements OnInit, OnDestroy {
         return changes.map(c => ({ key: c.payload.key, ...c.payload.val() }));
       })
       .subscribe(products => {
-        this.filteredProducts = this.products = products;
+
+        this.products = products;
+        this.filteredProducts = this.products.slice(0, 10);
         this.numberOfProducts = products.length;
+
+        this.page = 1;
       });
   }
 
   filter(query: string) {
     this.filteredProducts = (query) ?
       this.products.filter(p => p.title.toLowerCase().includes(query.toLowerCase())) :
-      this.products;
+      this.products.slice(0, 10);
+  }
+
+  changePage(numberOfPage: number) {
+    this.filteredProducts = this.products.slice((numberOfPage - 1) * 10, (numberOfPage * 10));
   }
 
   ngOnDestroy() {
     this.subscription.unsubscribe();
-  }
-
-  changePage(pageNumber) {
-    console.log(pageNumber);
   }
 }
