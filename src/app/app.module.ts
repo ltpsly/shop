@@ -55,7 +55,7 @@ import { ProductFormComponent } from './admin/product-form/product-form.componen
     RouterModule.forRoot([
       {
         path: '',
-        component: HomeComponent
+        component: ProductsComponent
       },
       {
         path: 'products',

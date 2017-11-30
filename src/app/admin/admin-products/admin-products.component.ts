@@ -19,7 +19,7 @@ export class AdminProductsComponent implements OnInit, OnDestroy {
 
   ngOnInit() {
     // filter yapmak için subscribe ile diziye atıyoruz
-    this.subscription = this.productService.getAll()
+    this.subscription = this.productService.getAll().snapshotChanges()
       .map(changes => {
         return changes.map(c => ({ key: c.payload.key, ...c.payload.val() }));
       })

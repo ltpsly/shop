@@ -22,7 +22,7 @@ export class ProductFormComponent {
     private productService: ProductService
   ) {
 
-    this.categories = categoryService.getCategories()
+    this.categories = categoryService.getAll()
       .snapshotChanges()
       .map(category => {
         return category.map(c => ({ key: c.payload.key, ...c.payload.val() }));
