@@ -1,14 +1,6 @@
 <section class="row">
   <div class="col-3">
-    <ul class="list-group">
-      <a class="list-group-item list-group-item-action"
-        routerLink="/"
-        [queryParams]="{category :c.key}"
-        [class.active]="category === c.key"
-        *ngFor="let c of categories | async">
-        {{c.name}}
-      </a>
-    </ul>
+    <product-filter [category]="category"></product-filter>
   </div>
   <div class="col">
     <section class="row">

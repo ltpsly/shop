@@ -1,6 +1,5 @@
 import { Product } from './../interfaces/product';
 import { ActivatedRoute } from '@angular/router';
-import { CategoryService } from '../services/category.service';
 import { ProductService } from '../services/product.service';
 import { Component, OnInit } from '@angular/core';
 
@@ -12,12 +11,10 @@ import { Component, OnInit } from '@angular/core';
 export class ProductsComponent implements OnInit {
   products: Product[] = [];
   filteredProducts: Product[] = [];
-  categories;
-  category;
+  category: string;
   constructor(
     private router: ActivatedRoute,
-    private productService: ProductService,
-    private categoryService: CategoryService
+    private productService: ProductService
   ) { }
 
   ngOnInit() {
@@ -38,9 +35,5 @@ export class ProductsComponent implements OnInit {
 
     });
 
-    this.categories = this.categoryService.getAll().snapshotChanges().map(category => {
-      return category.map(c => ({ key: c.payload.key, ...c.payload.val() }));
-    });
-    
   }
 }

@@ -12,7 +12,7 @@ import { ProductService } from '../../services/product.service';
 export class AdminProductsComponent implements OnInit, OnDestroy {
   page;
   numberOfProducts: number;
-  products: Product[];
+  products: Product[] = [];
   filteredProducts: any[];
   subscription: Subscription;
   constructor(private productService: ProductService) { }
@@ -24,11 +24,9 @@ export class AdminProductsComponent implements OnInit, OnDestroy {
         return changes.map(c => ({ key: c.payload.key, ...c.payload.val() }));
       })
       .subscribe(products => {
-
         this.products = products;
         this.filteredProducts = this.products.slice(0, 10);
         this.numberOfProducts = products.length;
-
         this.page = 1;
       });
   }
