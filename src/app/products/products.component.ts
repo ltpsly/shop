@@ -25,23 +25,22 @@ export class ProductsComponent implements OnInit {
       products.forEach(element => {
         this.products.push(element.payload.val());
       });
-    });
 
-    this.categories = this.categoryService.getAll()
-      .snapshotChanges()
-      .map(category => {
-        return category.map(c => ({ key: c.payload.key, ...c.payload.val() }));
+      this.router.queryParamMap.subscribe(params => {
+
+        this.category = params.get('category');
+
+        this.filteredProducts = (this.category) ?
+          this.products.filter(p => p.category === this.category) :
+          this.products;
+
       });
 
-    this.router.queryParamMap.subscribe(params => {
-
-      this.category = params.get('category');
-
-      this.filteredProducts = (this.category) ?
-        this.products.filter(p => p.category === this.category) :
-        this.products;
-
     });
 
+    this.categories = this.categoryService.getAll().snapshotChanges().map(category => {
+      return category.map(c => ({ key: c.payload.key, ...c.payload.val() }));
+    });
+    
   }
 }
