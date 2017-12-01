@@ -14,11 +14,12 @@
     </p>
   </div>
   <div class="card-footer bg-white border-0 p-0">
-    <a href="#"
+    <button
+      (click)="addToCart(product)"
       *ngIf="showActions"
       class="btn btn-primary btn-block rounded-0">
       <i class="fa fa-cart-plus"></i>
       Add to cart
-    </a>
+    </button>
   </div>
 </div>
